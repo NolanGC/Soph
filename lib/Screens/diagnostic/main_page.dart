@@ -7,10 +7,10 @@ class MainPage extends StatelessWidget {
         body: Column(children: <Widget>[
       Container(
         margin: EdgeInsets.only(top: 40),
-        child: Image(image: AssetImage('assets/images/soph_home_noglow.png')),
+        child: Image(image: AssetImage('assets/images/soph_home_2.png')),
       ),
       Container(
-        margin: EdgeInsets.only(right: 30, left: 30),
+        margin: EdgeInsets.only(top: 20, right: 30, left: 30),
         child: RichText(
           text: TextSpan(
               style: TextStyle(
@@ -28,7 +28,7 @@ class MainPage extends StatelessWidget {
       ),
       Container(child: Text('.  .  .', style: TextStyle(fontSize: 20))),
       Container(
-          margin: EdgeInsets.all(20),
+          margin: EdgeInsets.only(top: 20, right: 35, left: 35),
           alignment: Alignment.center,
           child: Text('A guide to rediscovering books in the digital age.',
               textAlign: TextAlign.center,

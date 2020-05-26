@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:soph/Screens/diagnostic/main_page.dart';
-import 'package:soph/Screens/diagnostic/typing_test.dart';
+import 'package:soph/Screens/diagnostic/reading_test.dart';
+import 'package:soph/Screens/diagnostic/reading_test_preface.dart';
 import 'package:worm_indicator/indicator.dart';
 import 'package:worm_indicator/shape.dart';
 
@@ -23,7 +24,8 @@ class _DiagnosticState extends State<Diagnostic> {
       controller: _controller,
       children: <Widget>[
         MainPage(),
-        TypingTest(),
+        ReadingTestPreface(),
+        ReadingTest(),
       ],
     );
   }
@@ -55,7 +57,7 @@ class _DiagnosticState extends State<Diagnostic> {
       children: <Widget>[
         buildPageView(),
         buildIndicator(
-            circleShape, 90, Colors.red, Color.fromARGB(255, 0, 0, 255)),
+            circleShape, 60, Colors.red, Color.fromARGB(255, 0, 0, 255)),
       ],
     ));
   }

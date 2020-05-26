@@ -5,6 +5,6 @@ class App extends StatelessWidget {
   final controller = PageController();
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: Diagnostic());
+    return MaterialApp(home: Diagnostic(), debugShowCheckedModeBanner: false);
   }
 }
