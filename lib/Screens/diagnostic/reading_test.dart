@@ -1,11 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:worm_indicator/shape.dart';
+import 'package:soph/Screens/diagnostic/breakdown.dart';
 
-class ReadingTest extends StatelessWidget {
-  final timer = Stopwatch();
+class ReadingTest extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _ReadingTestState();
+}
+
+class _ReadingTestState extends State<ReadingTest> {
+  var wpm;
+  var timer;
+  //307 words
   final excerpt =
       '     Alone during the day, in my room or out of doors, I thought аbout the waiter more than about my раrеnts; as I now realize, it was а kind of love. I had nо desire for contact, I wanted only to bе near him, and I missed him on his day off. When he finally reappeared, his black-and­-white attire brought lifе into the rооm and I acquired а sense of color. Не always kept his distance, even when off duty, and that may have accounted for my affection. Оnе day I ran into him in his street clothes at the bus-station buffet, now in the role of а guest, and there was no difference between the waiter at the hotel and the young man in the gray suit with а raincoat over his аrm, resting оnе foot on the railing and slowly munching а sausage while watching the departing buses. And perhaps this aloofness in combination with his attentiveness аnd poise were the components of the beauty that so moved me. Even today, in а predicament, I think about that waiter’s poise; it doesn’t usually help much, but it brings back his image, and for the moment at least I regain my composure. \n     Тoward midnight, оn my last day in the Black Earth Hotel – all the guests and the cook, too, had left – I passed the open kitchen on my way to my room аnd saw the waiter sitting bу а tub full of dishes, using а tablecloth to dry them. Later, when I looked out of my window, he was standing in his shirtsleeves on the bridge across the torrent, holding а pile of dishes under his right аrm. With his left hand, he took one after another and with а smooth graceful movement sent them sailing into the water like so many Frisbees.';
-  //307 words
+
+  @override
+  void initState() {
+    super.initState();
+    wpm = '';
+    timer = Stopwatch();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,13 +58,17 @@ class ReadingTest extends StatelessWidget {
             child: Text('Start',
                 style: TextStyle(fontFamily: 'Open Sans', color: Colors.white)),
             disabledColor: Colors.red,
+            color: Colors.red,
           ),
           Spacer(),
           RaisedButton(
               onPressed: () {
                 if (timer.isRunning) {
-                  print(timer.elapsed);
                   timer.stop();
+                  wpm = (307 / (timer.elapsed.inMilliseconds / 60000)).round();
+                  timer.reset();
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Breakdown(wpm)));
                 }
               },
               child: Text('Stop',
@@ -62,7 +80,7 @@ class ReadingTest extends StatelessWidget {
         ]),
         Container(
             margin: EdgeInsets.all(20.0),
-            child: Text('yo', style: TextStyle(fontSize: 30))),
+            child: Text(wpm + ' WPM', style: TextStyle(fontSize: 30))),
       ],
     ));
   }

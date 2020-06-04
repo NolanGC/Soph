@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:soph/Screens/diagnostic/breakdown.dart';
+import 'package:soph/Screens/diagnostic/initial_books.dart';
 import 'package:soph/Screens/diagnostic/main_page.dart';
 import 'package:soph/Screens/diagnostic/reading_test.dart';
 import 'package:soph/Screens/diagnostic/reading_test_preface.dart';
@@ -24,6 +26,7 @@ class _DiagnosticState extends State<Diagnostic> {
       controller: _controller,
       children: <Widget>[
         MainPage(),
+        InitialBooks(),
         ReadingTestPreface(),
         ReadingTest(),
       ],
@@ -39,7 +42,7 @@ class _DiagnosticState extends State<Diagnostic> {
         child: WormIndicator(
           indicatorColor: indicatorColor,
           color: color,
-          length: 3,
+          length: 4,
           controller: _controller,
           shape: shape,
         ));
